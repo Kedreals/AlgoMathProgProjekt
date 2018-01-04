@@ -17,4 +17,4 @@ set(SRC
   ${SRC_DIR}/heap.cpp
   )
 
-add_executable(MirkoEbert_JoshuaEnder ${SRC})
+add_executable(MirkoEbert_JoshuaEnder_JanSprigade ${SRC})

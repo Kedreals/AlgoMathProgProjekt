@@ -5,7 +5,7 @@
 
 void printUsage()
 {
-  std::cerr << "MirkoEbert_JoshuaEndert [-i/-q/-h] [path to array.txt]\n";
+  std::cerr << "MirkoEbert_JoshuaEndert_JanSprigade [-i/-q/-h] [path to array.txt]\n";
 }
 
 int main(int argc, char* argv[])
