@@ -9,6 +9,9 @@ set(INCLUDE_DIRS ${ROOT_DIR}/inc)
 
 include_directories(${INCLUDE_DIRS})
 
+set(GCC_COMPILER_FLAGS "-std=c++11")
+add_definitions(${GCC_COMPILER_FLAGS})
+
 set(SRC
   ${SRC_DIR}/main.cpp
   ${SRC_DIR}/insertion.cpp
