@@ -108,9 +108,9 @@ int main(int argc, char* argv[])
 #ifdef __linux__
 struct dirent *drnt;
 
-void PrintTable(double** Times, const std::vector<std::string>& rows, const std::vector<std::string>& cols)
+void PrintTable(double** Times, const std::vector<std::string>& rows, const std::vector<std::string>& cols, const std::vector<bool>& corectness)
 {
-  int n = 0;
+  int n = 12;
 
   for(int i = 0; i < cols.size(); ++i)
     if(cols[i].size()>n)
@@ -134,6 +134,18 @@ void PrintTable(double** Times, const std::vector<std::string>& rows, const std:
   std::cout << std::string(n, ' ');
   for(int i = 0; i < cols.size(); ++i)
     std::cout << " | " << cols[i] << std::string(n-cols[i].size(), ' ');
+  std::cout << "\n";
+
+  std::string correct("Correctness");
+  std::cout << correct << std::string(n-correct.size(), ' ');
+  for(int i = 0; i < cols.size(); ++i)
+    {
+      std::string r("UNDEFINED");
+      if(i < corectness.size())
+	r = (corectness[i])?("True"):("False");
+      
+      std::cout << " | " << r << std::string(n-r.size(), ' ');
+    }
   std::cout << "\n";
 
   for(int i = 0; i < rows.size(); ++i)
@@ -172,6 +184,9 @@ int GenerateTable(const std::string& UnsortedDir, const std::string& SortedDir)
   double* TimeTable[3];
   clock_t time1;
   clock_t time2;
+  std::vector<bool> correctness(3);
+  for(int i=0; i < 3; ++i)
+    correctness[i] = true;
   
   for(int i = 0; i < 3; ++i)
     TimeTable[i] = new double[files.size()];
@@ -207,16 +222,22 @@ int GenerateTable(const std::string& UnsortedDir, const std::string& SortedDir)
       time2 = clock();
 
       TimeTable[2][i] = ((double)time2-(double)time1)/(double)CLOCKS_PER_SEC;
+
+      for(int i= 0; i < n-1; ++i)
+	{
+	  correctness[0] = correctness[0] && (IArray[i] <= IArray[i+1]);
+	  correctness[1] = correctness[1] && (QArray[i] <= QArray[i+1]);
+	  correctness[2] = correctness[2] && (HArray[i] <= HArray[i+1]);
+	}
       
-      
-      WriteFile(((SortedDir+files[i]).insert(files[i].size()-4,"I")).c_str(), IArray, n);
-      WriteFile(((SortedDir+files[i]).insert(files[i].size()-4,"Q")).c_str(), QArray, n);
-      WriteFile(((SortedDir+files[i]).insert(files[i].size()-4,"H")).c_str(), HArray, n);
+      WriteFile(((SortedDir+files[i]).insert((SortedDir+files[i]).size()-4,"I")).c_str(), IArray, n);
+      WriteFile(((SortedDir+files[i]).insert((SortedDir+files[i]).size()-4,"Q")).c_str(), QArray, n);
+      WriteFile(((SortedDir+files[i]).insert((SortedDir+files[i]).size()-4,"H")).c_str(), HArray, n);
 
       delete[] IArray, QArray, HArray;
     }
 
-  PrintTable(TimeTable, files, Algorithms);
+  PrintTable(TimeTable, files, Algorithms, correctness);
   
   for(int i = 0; i < 3; ++i)
     delete[] TimeTable[i];
