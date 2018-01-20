@@ -1,13 +1,5 @@
 #include "sorting.hpp"
 
-//swaps two elements
-void swap(int* a, int* b)
-{
-	int t = *a;
-	*a = *b;
-	*b = t;
-}
-
 int partition(int* arr, int l, int r)
 {
 	int p = arr[r]; //pivot
@@ -19,10 +11,10 @@ int partition(int* arr, int l, int r)
 		do ++i; while (arr[i] < p);
 		do --j; while (j >= 0 && arr[i] > p);
 
-		swap(&arr[i], &arr[j]);
+		t = arr[i]; arr[i] = arr[j]; arr[j] = t;
 	} while (i < j);
 
-	swap(&arr[i + 1], &arr[r]);
+	arr[j] = arr[i]; arr[i] = arr[r]; arr[r] = t;
 
 	return i;	//new index of pivot
 }
