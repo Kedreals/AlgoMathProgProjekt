@@ -9,7 +9,7 @@ int partition(int* arr, int l, int r)
 	do
 	{
 		do ++i; while (arr[i] < p);
-		do --j; while (j >= 0 && arr[i] > p);
+		do --j; while (j > 0 && arr[j] > p);
 
 		t = arr[i]; arr[i] = arr[j]; arr[j] = t;
 	} while (i < j);
