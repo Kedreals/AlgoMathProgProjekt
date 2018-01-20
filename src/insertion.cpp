@@ -31,7 +31,7 @@ int BinarySearch(int a[], int key, int Laenge)
 
 /*Funktion, die einen Array durch Einfügen mittels binärer
 Suche sortiert.*/
-void InsertionSort(int a[], int Laenge)
+void InsertionSort(int Laenge, int a[])
 {
     int i, position, j, key;
  
@@ -54,7 +54,7 @@ void InsertionSort(int a[], int Laenge)
     }
 }
 
-
+/*
 void PrintArray(int arr[], int Laenge) 
 {
    int i;
@@ -79,3 +79,4 @@ int main()
  	PrintArray (arr, Laenge);
     return 0;
 }
+*/
