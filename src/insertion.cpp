@@ -53,30 +53,3 @@ void InsertionSort(int Laenge, int a[])
         a[position]=key;
     }
 }
-
-/*
-void PrintArray(int arr[], int Laenge) 
-{
-   int i;
-   for (i=0; i < Laenge; i++)
-       printf("%d ", arr[i]);
-   printf("\n");
-} 
- 
- 
-int main()
-{
-	int arr[20], i,Laenge;
-	cout<<"Geben Sie die Laenge des Arrays ein: "<<endl;
-	cin>>Laenge;
-	cout<<"Geben Sie die Elemente des Arrays ein: "<<endl;
-	for (i=0; i<Laenge; i++)
-    {
-    	cin>>arr[i];
-	}
- 
-    InsertionSort(arr, Laenge);
- 	PrintArray (arr, Laenge);
-    return 0;
-}
-*/
