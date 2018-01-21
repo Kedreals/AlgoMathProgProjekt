@@ -6,6 +6,13 @@
 /* some cool shit, not sure if it works under windows, thats why the guard
  */
 #ifdef __linux__
+/* these header are only included to itterate through a directory and
+   sort the the files alphabetically. They are not used any where.
+   We decided to implement a function that generates a table with the performance for us.
+   But I read that the dirent.h is not supported under some Windows versions
+   So I made a guard. Now this function will only be compiled under Linux.
+   Furthermore under Windows these header would not be included.
+ */
 #include <sstream>
 #include <dirent.h>
 #include <vector>
