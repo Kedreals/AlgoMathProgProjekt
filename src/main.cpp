@@ -29,7 +29,7 @@ void printUsage()
 
   //The usage of the cool shit I mentioned
 #ifdef __linux__
-  std::cerr << "Also Possible:\nMirkoEbert_JoshuaEndert_JanSprigade [-a] [path to unsorted arrays] [path where sorted arrays shall be saved]";
+  std::cerr << "Also Possible:\nMirkoEbert_JoshuaEndert_JanSprigade [-a] [path to unsorted arrays] [path where sorted arrays shall be saved]\n";
 #endif
 }
 
